@@ -1,0 +1,12 @@
+- url = dish.persisted? ? admin_dish_path(dish) : admin_dishes_path
+
+= simple_form_for dish&.becomes(Dish), url: url, html: { id: :dish_form } do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :price
+  = f.input :course do
+    = f.select :course, Dish.courses.map { |course| [course.underscore.humanize, course] }, { include_blank: false }, class: 'form-control'
+  = f.input :image, as: :file, input_html: { class: 'form-control' }
+
+  .form-actions
+    = f.button :submit

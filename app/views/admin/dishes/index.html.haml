@@ -1,0 +1,20 @@
+= link_to 'Create new dish', new_admin_dish_path, { style: 'float: right', class: 'btn btn-primary' }
+%br
+
+- if @dishes && @dishes.any?
+  %br
+  .row
+    .col-xl-12
+      = render 'table', dish_type: 'First Courses', dishes: @dishes.first_courses
+
+  %br
+  .row
+    .col-xl-12
+      = render 'table', dish_type: 'Drinks', dishes: @dishes.drinks
+
+  %br
+  .row
+    .col-xl-12
+      = render 'table', dish_type: 'Main Courses', dishes: @dishes.main_courses
+- else
+  = I18n.t('there_is_no_dishes')

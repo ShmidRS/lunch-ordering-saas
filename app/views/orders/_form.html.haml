@@ -1,0 +1,21 @@
+- if @dishes != nil && @dishes.first_courses.any? && @dishes.main_courses.any? && @dishes.drinks.any?
+
+  = form_tag '/orders', method: :post, id: :order_form do
+    %br
+    .row
+      .col-xl-12
+        = render 'order_table', dish_name: 'First Courses', dish_type: 'first_course', dishes: @dishes.first_courses
+
+    %br
+    .row
+      .col-xl-12
+        = render 'order_table', dish_name: 'Drinks', dish_type: 'drink', dishes: @dishes.drinks
+
+    %br
+    .row
+      .col-xl-12
+        = render 'order_table', dish_name: 'Main Courses', dish_type: 'main_course', dishes: @dishes.main_courses
+
+    = button_tag 'Create Order', type: :submit, name: :commit, class: 'btn btn-default', 'data-disable-with': 'Create Order'
+- else
+  %h5= I18n.t('we_do_not_have_available_dishes_right_now')

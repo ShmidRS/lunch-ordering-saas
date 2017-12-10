@@ -1,0 +1,15 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Dish
+      %th Name
+      %th Price
+      %th Image
+
+  - order.dishes.each do |dish|
+    %tbody
+      %tr
+        %td= dish.course.humanize
+        %td= dish.name
+        %td= dish.price
+        %td= image_tag(dish.image.url, style: 'height: 140px') unless dish.image.blank?

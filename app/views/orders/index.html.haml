@@ -1,0 +1,13 @@
+- date = params[:date].present? ? params[:date] : Date.today.to_s
+
+= link_to 'Create new order for ' + Date.today.to_s, new_order_path, { style: 'float: right', class: 'btn btn-primary' }
+
+- if @orders&.any?
+  %br
+  %h3= I18n.t('your_ordered_menus', date: date)
+  - @orders.each do |order|
+    %br
+    = link_to 'Destroy', order_path(order.id), method: :delete, style: 'float: right' if date == Date.today.to_s
+    = render 'ordered_dishes_table', order: order
+- else
+  %h3= I18n.t('you_do_not_have_ordered_menus', date: date)

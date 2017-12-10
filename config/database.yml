@@ -1,0 +1,37 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  port: 5432
+  username: <%= ENV['lunch_ordering_saas_database_username'] %>
+  password: <%= ENV['lunch_ordering_saas_database_password'] %>
+
+development:
+  <<: *default
+  host: <%= ENV['lunch_ordering_saas_database_host'] %>
+  database: <%= ENV['lunch_ordering_saas_database_name'] %>
+
+test:
+  <<: *default
+  database: lunch_ordering_saas_test
+
+staging:
+  host: <%= ENV['lunch_ordering_saas_database_host'] %>
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  port: 5432
+  database: <%= ENV['lunch_ordering_saas_database_name'] %>
+  username: <%= ENV['lunch_ordering_saas_database_username'] %>
+  password: <%= ENV['lunch_ordering_saas_database_password'] %>
+
+production:
+  host: <%= ENV['lunch_ordering_saas_database_host'] %>
+  pool: 5
+  port: 5432
+  adapter: postgresql
+  encoding: utf8
+  database: <%= ENV['lunch_ordering_saas_database_name'] %>
+  username: <%= ENV['lunch_ordering_saas_database_username'] %>
+  password: <%= ENV['lunch_ordering_saas_database_password'] %>

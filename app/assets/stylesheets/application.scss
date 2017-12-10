@@ -1,0 +1,10 @@
+@import "bootstrap";
+
+.has-error {
+  .help-block {
+    color: #721c24;
+  }
+  .form-control {
+    border-color: #721c24;
+  }
+}

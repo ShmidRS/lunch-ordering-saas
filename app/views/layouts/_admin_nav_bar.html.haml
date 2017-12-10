@@ -1,0 +1,9 @@
+%ul.navbar-nav.mr-auto
+  %li.nav-item
+    = link_to('Profile', edit_user_registration_url, class: 'nav-link')
+  %li.nav-item
+    = link_to('Dashboard', dashboards_url, class: 'nav-link')
+  %li.nav-item
+    = link_to('Dishes', admin_dishes_url, class: 'nav-link')
+  %li.nav-item
+    = link_to('Orders', orders_url(date: Date.today), class: 'nav-link')

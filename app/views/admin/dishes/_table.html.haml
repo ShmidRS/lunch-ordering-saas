@@ -1,0 +1,20 @@
+%h3= dish_type
+%table.table.table-striped{id: dish_type.parameterize(separator: '_')}
+  %thead
+    %tr
+      %th Id
+      %th Name
+      %th Price
+      %th Image
+      %th Edit
+      %th Destroy
+
+  - dishes.each do |dish|
+    %tbody
+      %tr
+        %td= dish.id
+        %td= dish.name
+        %td= dish.price
+        %td= image_tag(dish.image.url, style: 'height: 140px') unless dish.image.blank?
+        %td= link_to 'Edit', edit_admin_dish_path(dish.id)
+        %td= link_to 'Destroy', admin_dish_path(dish.id), method: :delete

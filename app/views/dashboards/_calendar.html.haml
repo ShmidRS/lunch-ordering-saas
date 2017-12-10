@@ -1,0 +1,11 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Weekday
+      %th Date
+
+  %tbody
+    - date_range.reverse_each do |date|
+      %tr
+        %td= link_to date.strftime('%A'), orders_url(date: date)
+        %td= link_to date.to_s, orders_url(date: date)
